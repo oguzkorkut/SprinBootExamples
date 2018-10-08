@@ -1,4 +1,4 @@
-package com.okorkut.derby;
+package com.okorkut.derby.springbootderby;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
