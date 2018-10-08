@@ -1,4 +1,4 @@
-package com.okorkut.derby.dao.utils;
+package com.okorkut.derby.db.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -36,7 +36,11 @@ public class DbUtil {
 	public static Connection getConnectionLocal(DBConnectionParameters dbConnParams) throws Exception {
 		Connection newConn = null;
 		Class.forName(dbConnParams.getDbDriver()).newInstance();
-		newConn = DriverManager.getConnection(dbConnParams.getDbJdbcURL(), dbConnParams.getDbUserName(), dbConnParams.getDbPassword());
+		if (dbConnParams.getDbType() == 1) {
+			newConn = DriverManager.getConnection(dbConnParams.getDbJdbcURL());
+		} else {
+			newConn = DriverManager.getConnection(dbConnParams.getDbJdbcURL(), dbConnParams.getDbUserName(), dbConnParams.getDbPassword());
+		}
 		logger.debug("Connection taken :" + newConn.getAutoCommit());
 
 		if (dbConnParams.isIsolationOn()) {

@@ -1,4 +1,4 @@
-package com.okorkut.derby.dao.utils;
+package com.okorkut.derby.db.utils;
 
 public enum DBType {
 	OTHERS(0, "Undefined"), //

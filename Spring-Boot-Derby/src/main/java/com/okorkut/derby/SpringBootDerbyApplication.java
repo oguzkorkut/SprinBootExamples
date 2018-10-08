@@ -20,20 +20,15 @@ public class SpringBootDerbyApplication {
 	public static String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
 	public static String JDBC_URL = "jdbc:derby:okorkut:create=true";
 	
-	@Autowired
-	private static DBCreater dbCreater;
+//	@Autowired
+//	private static DBCreater dbCreater;
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDerbyApplication.class, args);
 		
 		try {
 			createDB();
 			
-//			DBCreater dbCreater = new DBCreater();
-			
-			dbCreater.print();
-			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

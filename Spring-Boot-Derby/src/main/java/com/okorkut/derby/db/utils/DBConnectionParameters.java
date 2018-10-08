@@ -1,7 +1,7 @@
-package com.okorkut.derby.dao.utils;
+package com.okorkut.derby.db.utils;
 
 public class DBConnectionParameters {
-	private DBType dbType = DBType.MSSQL;
+	private int dbType = DBType.MSSQL.getDbType();
 	private String dbJdbcURL = null;
 	private String dbUserName = null;
 	private String dbPassword = null;
@@ -11,6 +11,14 @@ public class DBConnectionParameters {
 	private String dbDataSourceName = null;
 	private boolean dbJdbcPooled = false;
 	private boolean isolationOn;
+
+	public int getDbType() {
+		return dbType;
+	}
+
+	public void setDbType(int dbType) {
+		this.dbType = dbType;
+	}
 
 	public String getDbJdbcURL() {
 		return dbJdbcURL;
@@ -44,6 +52,14 @@ public class DBConnectionParameters {
 		this.dbDriver = dbDriver;
 	}
 
+	public String getInitSQL() {
+		return initSQL;
+	}
+
+	public void setInitSQL(String initSQL) {
+		this.initSQL = initSQL;
+	}
+
 	public String getDbDataSourceName() {
 		return dbDataSourceName;
 	}
@@ -60,28 +76,12 @@ public class DBConnectionParameters {
 		this.dbJdbcPooled = dbJdbcPooled;
 	}
 
-	public String getInitSQL() {
-		return initSQL;
-	}
-
-	public void setInitSQL(String initSQL) {
-		this.initSQL = initSQL;
-	}
-
-	public void setIsolationOn(boolean isolationOn) {
-		this.isolationOn = isolationOn;
-	}
-
 	public boolean isIsolationOn() {
 		return isolationOn;
 	}
 
-	public DBType getDbType() {
-		return dbType;
-	}
-
-	public void setDbType(DBType dbType) {
-		this.dbType = dbType;
+	public void setIsolationOn(boolean isolationOn) {
+		this.isolationOn = isolationOn;
 	}
 
 }
