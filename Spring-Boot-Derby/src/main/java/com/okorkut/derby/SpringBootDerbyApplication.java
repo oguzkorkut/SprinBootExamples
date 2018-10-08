@@ -1,5 +1,6 @@
 package com.okorkut.derby;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,13 +19,16 @@ public class SpringBootDerbyApplication {
 	
 	public static String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
 	public static String JDBC_URL = "jdbc:derby:okorkut:create=true";
+	
+	@Autowired
+	private static DBCreater dbCreater;
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDerbyApplication.class, args);
 		
 		try {
 			createDB();
 			
-			DBCreater dbCreater = new DBCreater();
+//			DBCreater dbCreater = new DBCreater();
 			
 			dbCreater.print();
 			
