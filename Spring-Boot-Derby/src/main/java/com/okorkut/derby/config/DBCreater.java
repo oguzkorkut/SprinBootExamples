@@ -20,6 +20,9 @@ public class DBCreater {
 	
 	private static final Logger logger = LogManager.getLogger(DBCreater.class);
 	
+	public static String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+	public static String JDBC_URL = "jdbc:derby:okorkut:create=true";
+	
 	@Autowired
 	private DBConnectionConfig dbConnectionConfig;
 	
@@ -39,39 +42,6 @@ public class DBCreater {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-//		String driver = "org.apache.derby.jdbc.EmbeddedDriver";
-//	    String dbName = "AddressBookDB";
-//	    String connectionURL = "jdbc:derby:" + dbName + ";create=true";
-//	    String createString = "CREATE TABLE IF NOT EXISTS  ADDRESSBOOKTbl (NAME VARCHAR(32) NOT NULL, ADDRESS VARCHAR(50) NOT NULL)";
-//	    Class.forName(driver);
-//
-//	    Connection conn = DriverManager.getConnection(connectionURL);
-//
-//	    Statement stmt = conn.createStatement();
-//	    stmt.executeUpdate(createString);
-//
-//	    PreparedStatement psInsert = conn
-//	        .prepareStatement("insert into ADDRESSBOOKTbl values (?,?)");
-//
-//	    psInsert.setString(1, "ww");
-//	    psInsert.setString(2, "ddd");
-//
-//	    psInsert.executeUpdate();
-//
-//	    Statement stmt2 = conn.createStatement();
-//	    ResultSet rs = stmt2.executeQuery("select * from ADDRESSBOOKTbl");
-//	    System.out.println("Addressed present in your Address Book\n\n");
-//	    int num = 0;
-//
-//	    while (rs.next()) {
-//	      System.out.println(++num + ": Name: " + rs.getString(1) + "\n Address"
-//	          + rs.getString(2));
-//	    }
-//	    rs.close();
-		
-		
 	}
 	
 	void createdb() throws Exception{
@@ -106,19 +76,18 @@ public class DBCreater {
 				}
 			}
 			
-			psInsert = con.prepareStatement("insert into ADDRESSBOOKTbl values (?,?)");
+			psInsert = con.prepareStatement("insert into TestLogger(loggerKey,loggerValue) values (?,?)");
 			psInsert.setString(1, "test1key");
-			psInsert.setString(1, "test1value");
+			psInsert.setString(2, "test1value");
 			
 			psInsert.executeUpdate();
 			
-			psSelect = con.prepareStatement("select * from ADDRESSBOOKTbl");
+			psSelect = con.prepareStatement("select * from TestLogger");
 			rsSelect = psSelect.executeQuery();
 		    int num = 0;
 	
 		    while (rsSelect.next()) {
-		     logger.info(rsSelect.getString(1) + " " + rsSelect.getString(2));
-		     System.err.println(rsSelect.getString(1) + " " + rsSelect.getString(2));
+		     logger.info(rsSelect.getString(1) + " " + rsSelect.getString(2)+ " " + rsSelect.getString(3));
 		    }
 		}  catch (Exception e) {
 			logger.error(e);

@@ -33,6 +33,8 @@
 /target
 /transaction-logs
 /logs
+/okorkut
+/okorkut/
 
 # dependencies
 /node
