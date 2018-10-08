@@ -1,4 +1,4 @@
-package com.okorkut.derby.config;
+package com.okorkut.derby.dao.utils;
 
 public class DBConnectionParameters {
 	private DBType dbType = DBType.MSSQL;

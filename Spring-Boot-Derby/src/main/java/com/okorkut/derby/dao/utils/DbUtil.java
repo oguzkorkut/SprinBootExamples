@@ -1,4 +1,4 @@
-package com.okorkut.derby.config;
+package com.okorkut.derby.dao.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

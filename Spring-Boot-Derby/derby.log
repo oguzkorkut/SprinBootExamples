@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Mon Oct 08 23:19:43 EET 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0166-5555-e048-00000a3a7e58 
+Mon Oct 08 23:36:38 EET 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0166-5565-5f70-00000a023a80 
 on database directory C:\Users\oguzk\git\SprinBootExamples\spring-boot-derby\AddressBookDB with class loader sun.misc.Launcher$AppClassLoader@2a139a55 
 Loaded from file:/C:/Users/oguzk/.m2/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
 java.vendor=Oracle Corporation
