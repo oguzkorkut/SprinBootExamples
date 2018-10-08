@@ -33,8 +33,9 @@
 /target
 /transaction-logs
 /logs
-/okorkut
-/okorkut/
+/testDB
+/testDB/
+/testDB/*
 
 # dependencies
 /node
