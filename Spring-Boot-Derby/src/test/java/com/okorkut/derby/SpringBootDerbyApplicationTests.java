@@ -1,4 +1,4 @@
-package com.okorkut.derby.springbootderby;
+package com.okorkut.derby;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
