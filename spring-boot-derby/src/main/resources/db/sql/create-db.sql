@@ -1,0 +1,8 @@
+--DROP TABLE users IF EXISTS;
+
+CREATE TABLE TestLogger (
+  id        	INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+  loggerKey 	VARCHAR(30),
+  loggerValue   VARCHAR(50),
+  CONSTRAINT primary_key PRIMARY KEY (id)
+);
