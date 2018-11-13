@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="warn" name="springboot-service" packages="">
-	<Properties>  
-	   <property name="catalina.base">${sys:catalina.base:-${sys:user.dir}}</property>
-	   <!-- <property name="catalina.base">${sys:catalina.home}</property> -->
-	</Properties>
+<Configuration status="warn" name="springbootSpringdatajpaBootstrap-service" packages="">
 	<Appenders>
-		<RollingFile name="springbootServiceFileAppender" fileName="${catalina.base}/logs/springbootService/springbootServiceApp.log" 
-		filePattern="${catalina.base}/logs/springbootService/rollingAll/springbootServiceApp-%d{yyyy-MM-dd}_%i.log.gz">
+		<RollingFile name="springbootSpringdatajpaBootstrapServiceFileAppender" fileName="logs/springbootSpringdatajpaBootstrapService/springbootSpringdatajpaBootstrapServiceApp.log" 
+		filePattern="logs/springbootSpringdatajpaBootstrapService/rollingAll/springbootSpringdatajpaBootstrapServiceApp-%d{yyyy-MM-dd}_%i.log.gz">
 			<PatternLayout>
 				<Pattern>%d{HH:mm:ss,SSS} %-5p: %c %t %m%n</Pattern>
 			</PatternLayout>
@@ -16,8 +12,8 @@
 				<!-- <TimeBasedTriggeringPolicy interval="1" modulate="true" /> -->
 			</Policies>
 		</RollingFile>
-		<RollingFile name="springbootServiceErrorFileAppender" fileName="${catalina.base}/logs/springbootService/springbootServiceApp_error.log" 
-		filePattern="${catalina.base}/logs/springbootService/rollingErrorAll/springbootServiceApp_error-%d{yyyy-MM-dd}_%i.log.gz">
+		<RollingFile name="springbootSpringdatajpaBootstrapServiceErrorFileAppender" fileName="logs/springbootSpringdatajpaBootstrapService/springbootSpringdatajpaBootstrapServiceApp_error.log" 
+		filePattern="logs/springbootSpringdatajpaBootstrapService/rollingErrorAll/springbootSpringdatajpaBootstrapServiceApp_error-%d{yyyy-MM-dd}_%i.log.gz">
 			<PatternLayout>
 				<Pattern>%d{HH:mm:ss,SSS} %-5p: %c %t %m%n</Pattern>
 			</PatternLayout>
@@ -36,27 +32,27 @@
 
 	<Loggers>
 		<logger name="org.hibernate" level="info" additivity="false">
-			<appender-ref ref="springbootServiceFileAppender" />
-			<appender-ref ref="springbootServiceErrorFileAppender" level="error" />
+			<appender-ref ref="springbootSpringdatajpaBootstrapServiceFileAppender" />
+			<appender-ref ref="springbootSpringdatajpaBootstrapServiceErrorFileAppender" level="error" />
 			<appender-ref ref="STDOUT" />
 		</logger>
 		<logger name="org.springframework" level="info" additivity="false">
-			<appender-ref ref="springbootServiceFileAppender" />
-			<appender-ref ref="springbootServiceErrorFileAppender" level="error" />
+			<appender-ref ref="springbootSpringdatajpaBootstrapServiceFileAppender" />
+			<appender-ref ref="springbootSpringdatajpaBootstrapServiceErrorFileAppender" level="error" />
 			<appender-ref ref="STDOUT" />
 		</logger>
 		<logger name="org.apache" level="info" additivity="false">
-			<appender-ref ref="springbootServiceFileAppender" />
-			<appender-ref ref="springbootServiceErrorFileAppender" level="error" />
+			<appender-ref ref="springbootSpringdatajpaBootstrapServiceFileAppender" />
+			<appender-ref ref="springbootSpringdatajpaBootstrapServiceErrorFileAppender" level="error" />
 			<appender-ref ref="STDOUT" />
 		</logger>
 		<logger name="com.okorkut" level="debug" additivity="false">
-			<appender-ref ref="springbootServiceFileAppender" />
-			<appender-ref ref="springbootServiceErrorFileAppender" level="error" />
+			<appender-ref ref="springbootSpringdatajpaBootstrapServiceFileAppender" />
+			<appender-ref ref="springbootSpringdatajpaBootstrapServiceErrorFileAppender" level="error" />
 			<appender-ref ref="STDOUT" />
 		</logger>
 		<Root level="trace">
-			 <appender-ref ref="STDOUT" /> 
+			<!-- <appender-ref ref="STDOUT" /> -->
 		</Root>
 	</Loggers>
 	<!-- appender harici logların seviyesi root level ile belirlenir. Logger olmasa dahi AppenderRef seviyesinde uygulamanın loglari tutulur. Logger tanımlı ise en 
