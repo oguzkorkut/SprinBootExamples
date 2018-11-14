@@ -7,19 +7,13 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
-
 
 @Configuration
 @ComponentScan(basePackageClasses = SpringbootSpringdatajpaBootstrap.class)
 @EnableAutoConfiguration
-//@EnableConfigurationProperties(UserProperties.class)
 @SpringBootApplication
-@EnableCaching
-//@ImportResource({ "classpath:META-INF/cxf/cxf.xml", "classpath:META-INF/cxf/cxf-servlet.xml" })
 public class SpringbootSpringdatajpaBootstrap  extends SpringBootServletInitializer{
 
 	

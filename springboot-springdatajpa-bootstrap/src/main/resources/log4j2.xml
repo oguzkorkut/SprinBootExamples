@@ -52,7 +52,7 @@
 			<appender-ref ref="STDOUT" />
 		</logger>
 		<Root level="trace">
-			<!-- <appender-ref ref="STDOUT" /> -->
+			<appender-ref ref="STDOUT" /> 
 		</Root>
 	</Loggers>
 	<!-- appender harici logların seviyesi root level ile belirlenir. Logger olmasa dahi AppenderRef seviyesinde uygulamanın loglari tutulur. Logger tanımlı ise en 
