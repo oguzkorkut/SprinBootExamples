@@ -25,3 +25,10 @@
 - Autowire MessageSource
 - @RequestHeader(value="Accept-Language", required=false) Locale locale
 - messageSource.getMessage("helloWorld.message", null, Locale)
+
+
+#Swagger
+- http://localhost:8080/v2/api-docs
+- http://localhost:8080/swagger-ui.html
+#ha_browser
+-http://stateless.co/hal_specification.html
