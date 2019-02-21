@@ -36,18 +36,6 @@ public class UserResource {
 		return userDaoService.findAll();
 	}
 
-	@GetMapping(path = "/users/{id}")
-	public User retrieveUser(@PathVariable Integer id)  {
-
-		User user = userDaoService.findOne(id);
-
-		if (user == null) {
-			throw new UserNotFoundException("Id-" + id);
-		}
-		
-		return user;
-	}
-	
 //	HATEOAS
 	@GetMapping(path = "/hateoas/users/{id}")
 	public Resource<User> getUserById(@PathVariable Integer id)  {
@@ -81,25 +69,58 @@ public class UserResource {
 		return resource;
 	}
 
-	@PostMapping("/users")
-	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
-		User savedUser = userDaoService.save(user);
-
-		System.out.println("Saved User Id:" + savedUser.getId());
-
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
-				.toUri();
-
-		return ResponseEntity.created(uri).build();
+	@GetMapping("/users/{id}")
+	public Resource<User> retrieveUser(@PathVariable int id) {
+		User user = userDaoService.findOne(id);
+		
+		if(user==null)
+			throw new UserNotFoundException("id-"+ id);
+		
+		
+		//"all-users", SERVER_PATH + "/users"
+		//retrieveAllUsers
+		Resource<User> resource = new Resource<User>(user);
+		
+		ControllerLinkBuilder linkTo = 
+				linkTo(methodOn(this.getClass()).retrieveAllUsers());
+		
+		resource.add(linkTo.withRel("all-users"));
+		
+		//HATEOAS
+		
+		return resource;
 	}
-	
+
 	@DeleteMapping(path="/users/{id}")
 	public void deleteUserById(@PathVariable Integer id) {
-		User deletedUser = userDaoService.deleteUserById(id);
+		User deletedUser = userDaoService.deleteById(id);
 		
 		if(deletedUser==null) {
 			throw new UserNotFoundException("Id-" + id);
 		}
+	}
+
+	//
+	// input - details of user
+	// output - CREATED & Return the created URI
+	
+	//HATEOAS
+	
+	@PostMapping("/users")
+	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
+		User savedUser = userDaoService.save(user);
+		
+		System.out.println("Saved User Id:" + savedUser.getId());
+		
+		// CREATED
+		// /user/{id}     savedUser.getId()
+		
+		URI location = ServletUriComponentsBuilder
+			.fromCurrentRequest()
+			.path("/{id}")
+			.buildAndExpand(savedUser.getId()).toUri();
+		
+		return ResponseEntity.created(location).build();
 	}
 
 }

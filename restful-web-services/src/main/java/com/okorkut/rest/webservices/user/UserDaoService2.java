@@ -1,4 +1,5 @@
 package com.okorkut.rest.webservices.user;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -7,11 +8,9 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserDaoService {
-	
-	private static List<User> users = new ArrayList<>();
+public class UserDaoService2 {
 
-	private static int usersCount = 3;
+	private static List<User> users = new ArrayList<User>();
 
 	static {
 		users.add(new User(1, "Oğuz", new Date()));
@@ -24,9 +23,12 @@ public class UserDaoService {
 	}
 
 	public User save(User user) {
-		if (user.getId() == null) {
-			user.setId(++usersCount);
+		if (users.size() == 0) {
+			user.setId(1);
+		} else {
+			user.setId(users.get(users.size() - 1).getId() + 1);
 		}
+
 		users.add(user);
 		return user;
 	}
@@ -39,16 +41,21 @@ public class UserDaoService {
 		}
 		return null;
 	}
-
-	public User deleteById(int id) {
+	
+	public User deleteUserById(Integer id) {
+		
 		Iterator<User> iterator = users.iterator();
+		
 		while (iterator.hasNext()) {
 			User user = iterator.next();
+			
 			if (user.getId() == id) {
 				iterator.remove();
 				return user;
 			}
+			
 		}
+		
 		return null;
 	}
 
